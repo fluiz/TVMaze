@@ -21,3 +21,6 @@ struct Schedule: Codable {
     var days: [String]
 }
 
+struct ShowSearchResult: Codable {
+    var show: ShowItem
+}

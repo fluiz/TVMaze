@@ -13,7 +13,7 @@ struct Person: Codable, Identifiable {
     var image: MazeImage?
 }
 
-struct PeopleResult: Codable {
+struct PeopleSearchResult: Codable {
     var person: Person
 }
 

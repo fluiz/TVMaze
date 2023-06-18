@@ -12,33 +12,26 @@ struct PeopleList: View {
     @StateObject var viewModel = PeopleSearchViewModel()
     
     var body: some View {
-        PeopleListContent(people: viewModel.people) { query in
-            viewModel.searchPeople(name: query)
+        PeopleListContent(people: viewModel.people, searchString: viewModel.searchQuery) { query in
+                viewModel.searchPeople(name: query)
         }
-            .onAppear {
-                viewModel.prepare(with: global)
-            }
+        .onAppear {
+            viewModel.prepare(with: global)
+        }
     }
 }
 
 private struct PeopleListContent: View {
     var people: [Person]
+    @State var searchString = ""
     var searchHandler: (String) -> Void
-    
-    @State private var searchString = ""
-    
-//    var searchAction: () -> Void {
-//        return {
-//            searchHandler("Test")
-//        }
-//    }
     
     var body: some View {
         NavigationStack {
             List(people) { person in
                 NavigationLink(person.name, destination: PersonDetails(selectedPerson: person))
             }
-            .navigationTitle("Search people")
+            .navigationTitle("People")
         }
         .searchable(text: $searchString)
         .onChange(of: searchString, perform: searchHandler)
@@ -57,9 +50,8 @@ struct PeopleList_Previews: PreviewProvider {
                 name: "Kate Beckinsale"
             )
         ],
-                          searchHandler: {
-            print($0)
-        }
+        searchString: "",
+        searchHandler: { print($0) }
         )
     }
 }

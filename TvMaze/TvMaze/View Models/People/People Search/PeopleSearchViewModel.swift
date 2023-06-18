@@ -7,11 +7,18 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 @MainActor class PeopleSearchViewModel: ViewModel {
     var global: Global?
+    private var disposeBag = Set<AnyCancellable>()
     
     @Published var people: [Person] = []
+    @Published var searchQuery = ""
+    
+    init() {
+        self.setSearchDebounce()
+    }
     
     func searchPeople(name: String) {
         Task {
@@ -28,5 +35,15 @@ import SwiftUI
                 print(error)
             }
         }
+    }
+    
+    private func setSearchDebounce() {
+        $searchQuery
+            .debounce(for: 1, scheduler: RunLoop.main)
+            .sink {
+                print("New search query \($0)")
+                self.searchPeople(name: $0)
+            }
+            .store(in: &disposeBag)
     }
 }
