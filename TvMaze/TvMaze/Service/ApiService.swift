@@ -15,4 +15,12 @@ class ApiService: ApiBaseService {
     func getEpisodes(showId: Int) async throws -> [Episode] {
         return try await request("shows/\(showId)/episodes", type: [Episode].self)
     }
+    
+    func searchPeople(query: String) async throws -> [PeopleResult] {
+        return try await request("search/people?q=\(query.replacingOccurrences(of: " ", with: "%20"))", type: [PeopleResult].self)
+    }
+    
+    func getCredits(personId: Int) async throws -> [CreditResult] {
+        return try await request("people/\(personId)/castcredits?embed=show", type: [CreditResult].self)
+    }
 }

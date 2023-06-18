@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E51274952A3F553C009E5E9F /* PeopleListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51274942A3F553C009E5E9F /* PeopleListUI.swift */; };
+		E51274992A3F5570009E5E9F /* PersonDetailsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51274982A3F5570009E5E9F /* PersonDetailsUI.swift */; };
+		E512749B2A3F5636009E5E9F /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = E512749A2A3F5636009E5E9F /* People.swift */; };
+		E51274A02A3F5876009E5E9F /* PeopleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E512749F2A3F5876009E5E9F /* PeopleSearchViewModel.swift */; };
+		E51274A22A3F5ACA009E5E9F /* PersonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51274A12A3F5ACA009E5E9F /* PersonDetailsViewModel.swift */; };
 		E521A9712A3EAF7B00AD9C50 /* ShowDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E521A9702A3EAF7B00AD9C50 /* ShowDetailsViewModel.swift */; };
 		E521A9732A3EB48000AD9C50 /* Episodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E521A9722A3EB48000AD9C50 /* Episodes.swift */; };
 		E521A9752A3EBA2A00AD9C50 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = E521A9742A3EBA2A00AD9C50 /* Global.swift */; };
@@ -46,6 +51,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E51274942A3F553C009E5E9F /* PeopleListUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListUI.swift; sourceTree = "<group>"; };
+		E51274982A3F5570009E5E9F /* PersonDetailsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsUI.swift; sourceTree = "<group>"; };
+		E512749A2A3F5636009E5E9F /* People.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = People.swift; sourceTree = "<group>"; };
+		E512749F2A3F5876009E5E9F /* PeopleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleSearchViewModel.swift; sourceTree = "<group>"; };
+		E51274A12A3F5ACA009E5E9F /* PersonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewModel.swift; sourceTree = "<group>"; };
 		E521A9702A3EAF7B00AD9C50 /* ShowDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewModel.swift; sourceTree = "<group>"; };
 		E521A9722A3EB48000AD9C50 /* Episodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episodes.swift; sourceTree = "<group>"; };
 		E521A9742A3EBA2A00AD9C50 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -95,6 +105,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E51274932A3F5472009E5E9F /* People */ = {
+			isa = PBXGroup;
+			children = (
+				E51274972A3F5554009E5E9F /* Person Details */,
+				E51274962A3F5547009E5E9F /* People Search */,
+			);
+			path = People;
+			sourceTree = "<group>";
+		};
+		E51274962A3F5547009E5E9F /* People Search */ = {
+			isa = PBXGroup;
+			children = (
+				E51274942A3F553C009E5E9F /* PeopleListUI.swift */,
+			);
+			path = "People Search";
+			sourceTree = "<group>";
+		};
+		E51274972A3F5554009E5E9F /* Person Details */ = {
+			isa = PBXGroup;
+			children = (
+				E51274982A3F5570009E5E9F /* PersonDetailsUI.swift */,
+			);
+			path = "Person Details";
+			sourceTree = "<group>";
+		};
+		E512749C2A3F5841009E5E9F /* People */ = {
+			isa = PBXGroup;
+			children = (
+				E512749E2A3F5859009E5E9F /* Person Details */,
+				E512749D2A3F584D009E5E9F /* People Search */,
+			);
+			path = People;
+			sourceTree = "<group>";
+		};
+		E512749D2A3F584D009E5E9F /* People Search */ = {
+			isa = PBXGroup;
+			children = (
+				E512749F2A3F5876009E5E9F /* PeopleSearchViewModel.swift */,
+			);
+			path = "People Search";
+			sourceTree = "<group>";
+		};
+		E512749E2A3F5859009E5E9F /* Person Details */ = {
+			isa = PBXGroup;
+			children = (
+				E51274A12A3F5ACA009E5E9F /* PersonDetailsViewModel.swift */,
+			);
+			path = "Person Details";
+			sourceTree = "<group>";
+		};
 		E521A96F2A3EAF5900AD9C50 /* Show Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +184,7 @@
 				E57615442A3E87CB00B46B0C /* Shows.swift */,
 				E57615462A3E8B8A00B46B0C /* Common.swift */,
 				E521A9722A3EB48000AD9C50 /* Episodes.swift */,
+				E512749A2A3F5636009E5E9F /* People.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,6 +217,7 @@
 		E57615532A3EAB8300B46B0C /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				E512749C2A3F5841009E5E9F /* People */,
 				E521A9782A3EC07900AD9C50 /* ViewModel.swift */,
 				E57615552A3EABBE00B46B0C /* Shows */,
 			);
@@ -166,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				E521A9762A3EBE0F00AD9C50 /* Dashboard.swift */,
+				E51274932A3F5472009E5E9F /* People */,
 				E576154B2A3E92B100B46B0C /* Shows */,
 			);
 			path = Views;
@@ -406,19 +469,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				E576154E2A3E932000B46B0C /* ShowListUI.swift in Sources */,
+				E51274952A3F553C009E5E9F /* PeopleListUI.swift in Sources */,
 				E521A9732A3EB48000AD9C50 /* Episodes.swift in Sources */,
 				E521A97D2A3ED66200AD9C50 /* EpisodeDetailsUI.swift in Sources */,
 				E57615492A3E8D6500B46B0C /* ApiBaseService.swift in Sources */,
 				E57615502A3E932F00B46B0C /* ShowListViewModel.swift in Sources */,
 				E576155A2A3EAE4D00B46B0C /* ShowDetailsUI.swift in Sources */,
+				E51274A02A3F5876009E5E9F /* PeopleSearchViewModel.swift in Sources */,
 				E57615472A3E8B8A00B46B0C /* Common.swift in Sources */,
 				E521A9792A3EC07900AD9C50 /* ViewModel.swift in Sources */,
+				E51274992A3F5570009E5E9F /* PersonDetailsUI.swift in Sources */,
 				E521A9752A3EBA2A00AD9C50 /* Global.swift in Sources */,
 				E57615452A3E87CB00B46B0C /* Shows.swift in Sources */,
 				E57615522A3E960700B46B0C /* ApiService.swift in Sources */,
 				E5CDE00D2A3E6D0B00B21D4C /* TvMazeApp.swift in Sources */,
 				E521A9772A3EBE0F00AD9C50 /* Dashboard.swift in Sources */,
 				E521A9712A3EAF7B00AD9C50 /* ShowDetailsViewModel.swift in Sources */,
+				E512749B2A3F5636009E5E9F /* People.swift in Sources */,
+				E51274A22A3F5ACA009E5E9F /* PersonDetailsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
