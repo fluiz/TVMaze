@@ -24,12 +24,11 @@ private struct ShowsListContent: View {
     var shows: [ShowItem]
     
     var body: some View {
-        VStack {
+        NavigationStack {
             List(shows) { show in
-                Text(show.name)
+                NavigationLink(show.name, destination: ShowDetails(selectedShow: show))
             }
         }
-        .padding()
     }
 }
 

@@ -29,14 +29,19 @@ private struct ShowDetailsContent: View {
     var episodes: [Episode]
     
     var body: some View {
-        VStack {
+        NavigationStack {
             Text(selectedShow.name)
             Spacer()
             List(episodes) { episode in
-                HStack {
-                    Text(episode.name)
-                    Spacer()
-                    Text("S\(episode.season)E\(episode.number)")
+                NavigationLink {
+                    EpisodeDetails(selectedEpisode: episode)
+                } label: {
+                    HStack {
+                        Text(episode.name)
+                        Spacer()
+                        Text(episode.seasonalNumber())
+                        
+                    }
                 }
             }
         }

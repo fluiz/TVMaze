@@ -14,4 +14,8 @@ struct Episode: Codable, Identifiable {
     var number: Int
     var image: MazeImage?
     var summary: String?
+    
+    func seasonalNumber() -> String {
+        return "S\(season)E\(number)"
+    }
 }
