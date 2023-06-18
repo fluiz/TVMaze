@@ -8,16 +8,20 @@
 import Foundation
 import SwiftUI
 
-@MainActor class ShowsListViewModel: ObservableObject {
+@MainActor class ShowsListViewModel: ViewModel {
+    var global: Global?
+    
     @Published var shows: [ShowItem] = []
-    private let service = ApiService()
     
     func updateShows() {
         Task {
             do {
+                guard let service = global?.apiService else {
+                    return
+                }
                 shows = try await service.getShows(page: 0)
-                print("Loading finished")
-                print(shows)
+//                print("Loading finished")
+//                print(shows)
             } catch {
                 print(error)
             }
