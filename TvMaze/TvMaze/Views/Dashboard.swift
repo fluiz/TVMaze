@@ -20,6 +20,10 @@ struct Dashboard: View {
                 .tabItem {
                     Label("People", systemImage: "map")
                 }
+            FavoritesList()
+                .tabItem {
+                    Label("Favorites", systemImage: "map")
+                }
         }
         .navigationBarHidden(true)
         .environmentObject(global)

@@ -6,46 +6,58 @@
 //
 
 import Foundation
+import SwiftUI
 
-class FavoritesStorage {
-    private let FAVORITES_KEY = "favoriteskey"
-    private var favorites: [ShowItem] = []
+@MainActor
+class FavoritesStorage: ObservableObject {
+    @Published var favoritesList: [ShowItem] = []
+    
     private let userDefaults = UserDefaults.standard
+    private let FAVORITES_KEY = "favoriteskey"
     
     init() {
-        favorites = loadFavorites()
+        self.loadFavorites()
     }
     
     func addFavorite(show: ShowItem) {
         if (isFavorite(showId: show.id)) {
             return
         }
-        favorites.append(show)
+        favoritesList.append(show)
+        favoritesList.sort {
+            $0.name < $1.name
+        }
         saveFavorites()
     }
     
     func removeFavorite(showId: Int) {
-        if let index = favorites.firstIndex(where: { $0.id == showId }) {
-            favorites.remove(at: index)
+        if let index = favoritesList.firstIndex(where: { $0.id == showId }) {
+            favoritesList.remove(at: index)
+            saveFavorites()
         }
     }
     
     func isFavorite(showId: Int) -> Bool {
-        return favorites.contains { item in
+        return favoritesList.contains { item in
             item.id == showId
         }
     }
     
+    func refreshFavorites() -> [ShowItem] {
+        loadFavorites()
+        return favoritesList
+    }
+    
     private func saveFavorites() {
         do {
-            let encodedData = try JSONEncoder().encode(favorites)
+            let encodedData = try JSONEncoder().encode(favoritesList)
             userDefaults.set(encodedData, forKey: FAVORITES_KEY)
         } catch {
             print(error)
         }
     }
     
-    private func loadFavorites() -> [ShowItem] {
+    private func loadFavorites() {
         var savedFavorites: [ShowItem] = []
         if let savedData = userDefaults.object(forKey: FAVORITES_KEY) as? Data {
             do {
@@ -54,6 +66,6 @@ class FavoritesStorage {
                 print(error)
             }
         }
-        return savedFavorites
+        favoritesList = savedFavorites
     }
 }

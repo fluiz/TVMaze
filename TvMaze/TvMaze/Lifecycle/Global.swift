@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 class Global: ObservableObject {
     let apiService = ApiService()
     let favorites = FavoritesStorage()

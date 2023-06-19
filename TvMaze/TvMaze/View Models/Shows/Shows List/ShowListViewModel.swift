@@ -21,26 +21,28 @@ import Combine
     }
     
     func updateShows() {
+        guard let service = global?.apiService else {
+            return
+        }
         Task {
             do {
-                guard let service = global?.apiService else {
-                    return
-                }
                 shows = try await service.getShows(page: 0)
             } catch {
                 print(error)
             }
         }
-        
     }
     
     func searchShows(query: String) {
-        if (query.isEmpty) { return }
+        if (query.isEmpty) {
+            updateShows()
+            return
+        }
+        guard let service = global?.apiService else {
+            return
+        }
         Task {
             do {
-                guard let service = global?.apiService else {
-                    return
-                }
                 let showsResult = try await service.searchShows(query: query)
                 print("Found \(showsResult.count) results")
                 shows = showsResult.map { result in
