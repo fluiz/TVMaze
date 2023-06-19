@@ -11,8 +11,18 @@ extension ShowItem {
     func genresString() -> String {
         var content = ""
         genres.forEach { item in
-            content += "\(item) "
+            content += "\(item), "
         }
-        return content.trimmingCharacters(in: .whitespacesAndNewlines)
+        content.removeLast(2)
+        return content
+    }
+    
+    func daysString() -> String {
+        var content = ""
+        schedule.days.forEach { day in
+            content += "\(day), "
+        }
+        content.removeLast(2)
+        return content
     }
 }

@@ -29,7 +29,7 @@ private struct PeopleListContent: View {
     var body: some View {
         NavigationStack {
             List(people) { person in
-                NavigationLink(person.name, destination: PersonDetails(selectedPerson: person))
+                PersonItemRow(person: person)
             }
             .navigationTitle("People")
         }
@@ -40,16 +40,7 @@ private struct PeopleListContent: View {
 
 struct PeopleList_Previews: PreviewProvider {
     static var previews: some View {
-        PeopleListContent(people: [
-            Person(
-                id: 5406,
-                name: "Kate Woods"
-            ),
-            Person(
-                id: 114411,
-                name: "Kate Beckinsale"
-            )
-        ],
+        PeopleListContent(people: Person.mockArray(),
         searchString: "",
         searchHandler: { print($0) }
         )

@@ -30,19 +30,45 @@ private struct ShowDetailsContent: View {
     
     var body: some View {
         NavigationStack {
-            Text(selectedShow.name)
-            Spacer()
-            List(episodes) { episode in
-                NavigationLink {
-                    EpisodeDetails(selectedEpisode: episode)
-                } label: {
-                    HStack {
-                        Text(episode.name)
-                        Spacer()
-                        Text(episode.seasonalNumber())
-                        
+            ScrollView {
+                VStack {
+                    if let imageURL = selectedShow.image?.original {
+                        AsyncImage(url: URL(string: imageURL)) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(maxWidth: .infinity, maxHeight: 300)
+                                .clipped()
+                        } placeholder: {
+                            Color.gray
+                        }
+                    }
+                    Text(selectedShow.name).font(.title)
+                    Text(selectedShow.genresString())
+                    if let safeSummary = selectedShow.summary {
+                        Text(safeSummary)
+                    }
+                    
+                    Text(selectedShow.daysString())
+                    if (!selectedShow.schedule.time.isEmpty) {
+                        Text("At \(selectedShow.schedule.time)")
                     }
                 }
+                Spacer()
+                Text("Episodes").font(.title2)
+                List(episodes) { episode in
+                    NavigationLink {
+                        EpisodeDetails(selectedEpisode: episode)
+                    } label: {
+                        HStack {
+                            Text(episode.name)
+                            Spacer()
+                            Text(episode.seasonalNumber())
+                        }
+                    }
+                }
+                .frame(height: 500)
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
@@ -55,7 +81,11 @@ struct ShowDetails_Previews: PreviewProvider {
                 id: 1,
                 name: "Sandman",
                 genres: ["Drama", "Comedy"],
-                schedule: Schedule(time: "45min", days: ["Mon"])
+                schedule: Schedule(time: "8:00", days: ["Mon"]),
+                image: MazeImage(
+                    medium: "https://static.tvmaze.com/uploads/images/medium_portrait/366/916822.jpg",
+                    original: "https://static.tvmaze.com/uploads/images/original_untouched/366/916822.jpg"
+                )
             ), episodes: [
                 Episode(id: 1, name: "A night to remember", season: 1, number: 1),
                 Episode(id: 2, name: "A thousand cuts", season: 1, number: 2),
