@@ -11,7 +11,9 @@ import SwiftUI
 struct TvMazeApp: App {
     var body: some Scene {
         WindowGroup {
-            ShowsList()
+            NavigationView {
+                Dashboard()
+            }
         }
     }
 }
