@@ -49,16 +49,7 @@ private struct ShowsListContent: View {
 struct ShowList_Previews: PreviewProvider {
     static var previews: some View {
         ShowsListContent(
-            shows: [
-                ShowItem(id: 1, name: "The Simpsons", genres: ["Drama", "Comedy"], schedule: Schedule(time: "45min", days: ["Mon"]), image: MazeImage(
-                    medium: "https://static.tvmaze.com/uploads/images/medium_portrait/366/916822.jpg",
-                    original: "https://static.tvmaze.com/uploads/images/medium_portrait/366/916822.jpg"
-                )),
-                ShowItem(id: 2, name: "Black Mirror", genres: ["Drama", "Comedy"], schedule: Schedule(time: "45min", days: ["Mon"]), image: MazeImage(
-                    medium: "https://static.tvmaze.com/uploads/images/medium_portrait/0/392.jpg",
-                    original: "https://static.tvmaze.com/uploads/images/medium_portrait/0/392.jpg"
-                ))
-            ],
+            shows: ShowItem.mockArray(),
             searchString: "",
             searchHandler: { print($0) }
         )

@@ -30,18 +30,27 @@ private struct PersonDetailsContent: View {
     
     var body: some View {
         NavigationStack {
-            Text(selectedPerson.name)
-            Spacer()
-            List(credits) { credit in
-                NavigationLink {
-                    ShowDetails(selectedShow: credit)
-                } label: {
-                    HStack {
-                        Text(credit.name)
-                        Spacer()
-                        Text("Genres would be cool")
+            ScrollView {
+                if let imageURL = selectedPerson.image?.original {
+                    AsyncImage(url: URL(string: imageURL)) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(maxWidth: .infinity, maxHeight: 300)
+                            .clipped()
+                    } placeholder: {
+                        Color.gray
                     }
                 }
+                Text(selectedPerson.name).font(.title)
+                Spacer()
+                Text("TV Shows").font(.title2)
+                List(credits) { credit in
+                    ShowItemRow(item: credit, favorited: false)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                }
+                .frame(height: 500)
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
@@ -52,11 +61,8 @@ struct PersonDetails_Previews: PreviewProvider {
         PersonDetailsContent(
             selectedPerson: Person(
                 id: 14245,
-                name: "Bryan Cranston"
+                name: "Henry Cavill"
             ),
-            credits: [
-                ShowItem(id: 1, name: "The Simpsons", genres: ["Drama", "Comedy"], schedule: Schedule(time: "45min", days: ["Mon"])),
-                ShowItem(id: 2, name: "Black Mirror", genres: ["Drama", "Comedy"], schedule: Schedule(time: "45min", days: ["Mon"]))
-            ])
+            credits: ShowItem.mockArray())
     }
 }

@@ -57,15 +57,8 @@ private struct ShowDetailsContent: View {
                 Spacer()
                 Text("Episodes").font(.title2)
                 List(episodes) { episode in
-                    NavigationLink {
-                        EpisodeDetails(selectedEpisode: episode)
-                    } label: {
-                        HStack {
-                            Text(episode.name)
-                            Spacer()
-                            Text(episode.seasonalNumber())
-                        }
-                    }
+                    EpisodeItemRow(episode: episode)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
                 }
                 .frame(height: 500)
                 .navigationBarTitleDisplayMode(.inline)
@@ -77,19 +70,8 @@ private struct ShowDetailsContent: View {
 struct ShowDetails_Previews: PreviewProvider {
     static var previews: some View {
         ShowDetailsContent(
-            selectedShow: ShowItem(
-                id: 1,
-                name: "Sandman",
-                genres: ["Drama", "Comedy"],
-                schedule: Schedule(time: "8:00", days: ["Mon"]),
-                image: MazeImage(
-                    medium: "https://static.tvmaze.com/uploads/images/medium_portrait/366/916822.jpg",
-                    original: "https://static.tvmaze.com/uploads/images/original_untouched/366/916822.jpg"
-                )
-            ), episodes: [
-                Episode(id: 1, name: "A night to remember", season: 1, number: 1),
-                Episode(id: 2, name: "A thousand cuts", season: 1, number: 2),
-                Episode(id: 3, name: "Better late than never", season: 2, number: 1)
-            ])
+            selectedShow: ShowItem.mockArray().first!,
+            episodes: Episode.mockArray()
+        )
     }
 }

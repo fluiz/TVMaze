@@ -27,14 +27,11 @@ struct ShowItemRow: View {
                 VStack(alignment: .leading) {
                     Text(item.name).font(.title)
                     Text(item.genresString())
-                }
+                }.padding(.leading, 16)
                 Spacer()
 //                FavoriteIcon(favorited: favorited).frame(alignment: .trailing)
-            }
-            .frame(
-                maxWidth: .infinity
-            )
-            .background(Color.blue)
+            }.background(Color.blue)
+            
             NavigationLink {
                 ShowDetails(selectedShow: item)
             } label: {
@@ -47,16 +44,7 @@ struct ShowItemRow: View {
 struct ShowItemRow_Previews: PreviewProvider {
     static var previews: some View {
         ShowItemRow(
-            item: ShowItem(
-                id: 1,
-                name: "The Simpsons",
-                genres: ["Drama", "Comedy"],
-                schedule: Schedule(time: "45min",days: ["Mon"]),
-                image: MazeImage(
-                    medium: "https://static.tvmaze.com/uploads/images/medium_portrait/366/916822.jpg",
-                    original: "https://static.tvmaze.com/uploads/images/original_untouched/366/916822.jpg"
-                )
-            ),
+            item: ShowItem.mockArray().first!,
             favorited: false
         )
     }

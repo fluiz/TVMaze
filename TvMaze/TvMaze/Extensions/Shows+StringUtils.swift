@@ -13,7 +13,9 @@ extension ShowItem {
         genres.forEach { item in
             content += "\(item), "
         }
-        content.removeLast(2)
+        if (!content.isEmpty) {
+            content.removeLast(2)
+        }
         return content
     }
     
@@ -22,7 +24,9 @@ extension ShowItem {
         schedule.days.forEach { day in
             content += "\(day), "
         }
-        content.removeLast(2)
+        if (!content.isEmpty) {
+            content.removeLast(2)
+        }
         return content
     }
 }

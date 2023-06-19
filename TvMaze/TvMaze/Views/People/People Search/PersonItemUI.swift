@@ -18,12 +18,15 @@ struct PersonItemRow: View {
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
+                            .frame(width: 80, height: 120, alignment: .leading)
                     } placeholder: {
                         Color.gray
                     }
-                    .frame(width: 100, height: 150, alignment: .leading)
+                    .frame(width: 80, height: 120, alignment: .leading)
                 }
-                Text(person.name).font(.title)
+                Text(person.name)
+                    .font(.title2)
+                    .padding(.leading, 16)
                 Spacer()
             }
             
