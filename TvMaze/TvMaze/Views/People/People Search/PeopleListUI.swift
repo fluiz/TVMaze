@@ -12,12 +12,14 @@ struct PeopleList: View {
     @StateObject var viewModel = PeopleSearchViewModel()
     
     var body: some View {
-        PeopleListContent(people: viewModel.people, searchString: viewModel.searchQuery) { query in
+        PeopleListContent(
+            people: viewModel.people,
+            searchString: viewModel.searchQuery) { query in
                 viewModel.searchPeople(name: query)
-        }
-        .onAppear {
-            viewModel.prepare(with: global)
-        }
+            }
+            .onAppear {
+                viewModel.prepare(with: global)
+            }
     }
 }
 
@@ -41,8 +43,8 @@ private struct PeopleListContent: View {
 struct PeopleList_Previews: PreviewProvider {
     static var previews: some View {
         PeopleListContent(people: Person.mockArray(),
-        searchString: "",
-        searchHandler: { print($0) }
+                          searchString: "",
+                          searchHandler: { print($0) }
         )
     }
 }

@@ -44,25 +44,28 @@ private struct PersonDetailsContent: View {
                 }
                 Text(selectedPerson.name).font(.title)
                 Spacer()
-                Text("TV Shows").font(.title2)
-                List(credits) { credit in
-                    ShowItemRow(item: credit, favorited: false)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                
+                if (!credits.isEmpty) {
+                    HStack {
+                        Text("Appearances").font(.title2)
+                        Spacer()
+                    }.padding()
+                    
+                    List(credits) { credit in
+                        ShowItemRow(item: credit, favorited: false)
+                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                    }
+                    .frame(height: 500)
                 }
-                .frame(height: 500)
-                .navigationBarTitleDisplayMode(.inline)
             }
-        }
+        }.navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct PersonDetails_Previews: PreviewProvider {
     static var previews: some View {
         PersonDetailsContent(
-            selectedPerson: Person(
-                id: 14245,
-                name: "Henry Cavill"
-            ),
+            selectedPerson: Person.mockArray().first!,
             credits: ShowItem.mockArray())
     }
 }

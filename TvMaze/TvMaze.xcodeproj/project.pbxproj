@@ -252,11 +252,11 @@
 		E57615542A3EAB9300B46B0C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E576154B2A3E92B100B46B0C /* Shows */,
 				E5FFE8102A40952700A45C95 /* Episodes */,
+				E51274932A3F5472009E5E9F /* People */,
 				E51274AF2A3FA950009E5E9F /* Components */,
 				E521A9762A3EBE0F00AD9C50 /* Dashboard.swift */,
-				E51274932A3F5472009E5E9F /* People */,
-				E576154B2A3E92B100B46B0C /* Shows */,
 			);
 			path = Views;
 			sourceTree = "<group>";

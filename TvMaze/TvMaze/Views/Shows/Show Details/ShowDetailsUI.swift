@@ -15,8 +15,12 @@ struct ShowDetails: View {
     
     var body: some View {
         ShowDetailsContent(
-            selectedShow: selectedShow, episodes: viewModel.episodes
-        )
+            selectedShow: selectedShow,
+            episodes: viewModel.episodes,
+            favorited: viewModel.favorited
+        ) { show in
+            viewModel.toggleFavorite(show: show)
+        }
         .onAppear {
             viewModel.prepare(with: global)
             viewModel.loadEpisodes(showId: selectedShow.id)
@@ -27,6 +31,8 @@ struct ShowDetails: View {
 private struct ShowDetailsContent: View {
     var selectedShow: ShowItem
     var episodes: [Episode]
+    var favorited: Bool
+    var favoritesHandler: (ShowItem) -> Void
     
     var body: some View {
         NavigationStack {
@@ -44,9 +50,18 @@ private struct ShowDetailsContent: View {
                         }
                     }
                     Text(selectedShow.name).font(.title)
-                    Text(selectedShow.genresString())
+                    HStack {
+                        Text(selectedShow.genresString())
+                        Spacer()
+                        FavoriteIcon(favorited: favorited)
+                            .frame(alignment: .trailing)
+                            .onTapGesture {
+                                favoritesHandler(selectedShow)
+                            }
+                    }.padding(.horizontal)
+                    
                     if let safeSummary = selectedShow.summary {
-                        Text(safeSummary)
+                        Text(safeSummary).padding()
                     }
                     
                     Text(selectedShow.daysString())
@@ -55,7 +70,14 @@ private struct ShowDetailsContent: View {
                     }
                 }
                 Spacer()
-                Text("Episodes").font(.title2)
+                
+                if (!episodes.isEmpty) {
+                    HStack {
+                        Text("Episodes").font(.title2)
+                        Spacer()
+                    }.padding()
+                }
+                
                 List(episodes) { episode in
                     EpisodeItemRow(episode: episode)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
@@ -71,7 +93,9 @@ struct ShowDetails_Previews: PreviewProvider {
     static var previews: some View {
         ShowDetailsContent(
             selectedShow: ShowItem.mockArray().first!,
-            episodes: Episode.mockArray()
+            episodes: Episode.mockArray(),
+            favorited: false,
+            favoritesHandler: { print($0) }
         )
     }
 }

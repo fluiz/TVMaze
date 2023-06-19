@@ -29,7 +29,6 @@ struct ShowItemRow: View {
                     Text(item.genresString())
                 }.padding(.leading, 16)
                 Spacer()
-//                FavoriteIcon(favorited: favorited).frame(alignment: .trailing)
             }.background(Color.blue)
             
             NavigationLink {
