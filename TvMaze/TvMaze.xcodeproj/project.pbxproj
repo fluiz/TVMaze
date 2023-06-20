@@ -27,6 +27,7 @@
 		E56207C72A40D79700EE8A7F /* FavoritesListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56207C62A40D79700EE8A7F /* FavoritesListUI.swift */; };
 		E56207CA2A40D81B00EE8A7F /* FavoritesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56207C92A40D81B00EE8A7F /* FavoritesListViewModel.swift */; };
 		E56207CF2A41EBF400EE8A7F /* String+HTMLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56207CE2A41EBF400EE8A7F /* String+HTMLUtils.swift */; };
+		E56207D12A41F76A00EE8A7F /* EpisodeListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56207D02A41F76A00EE8A7F /* EpisodeListUI.swift */; };
 		E57615452A3E87CB00B46B0C /* Shows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57615442A3E87CB00B46B0C /* Shows.swift */; };
 		E57615472A3E8B8A00B46B0C /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57615462A3E8B8A00B46B0C /* Common.swift */; };
 		E57615492A3E8D6500B46B0C /* ApiBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57615482A3E8D6500B46B0C /* ApiBaseService.swift */; };
@@ -81,6 +82,7 @@
 		E56207C62A40D79700EE8A7F /* FavoritesListUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListUI.swift; sourceTree = "<group>"; };
 		E56207C92A40D81B00EE8A7F /* FavoritesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewModel.swift; sourceTree = "<group>"; };
 		E56207CE2A41EBF400EE8A7F /* String+HTMLUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTMLUtils.swift"; sourceTree = "<group>"; };
+		E56207D02A41F76A00EE8A7F /* EpisodeListUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeListUI.swift; sourceTree = "<group>"; };
 		E57615442A3E87CB00B46B0C /* Shows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shows.swift; sourceTree = "<group>"; };
 		E57615462A3E8B8A00B46B0C /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		E57615482A3E8D6500B46B0C /* ApiBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiBaseService.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				E5FFE8122A40956200A45C95 /* EpisodeItemUI.swift */,
+				E56207D02A41F76A00EE8A7F /* EpisodeListUI.swift */,
 			);
 			path = "Episodes List";
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				E57615502A3E932F00B46B0C /* ShowListViewModel.swift in Sources */,
 				E576155A2A3EAE4D00B46B0C /* ShowDetailsUI.swift in Sources */,
 				E51274A02A3F5876009E5E9F /* PeopleSearchViewModel.swift in Sources */,
+				E56207D12A41F76A00EE8A7F /* EpisodeListUI.swift in Sources */,
 				E56207CA2A40D81B00EE8A7F /* FavoritesListViewModel.swift in Sources */,
 				E57615472A3E8B8A00B46B0C /* Common.swift in Sources */,
 				E521A9792A3EC07900AD9C50 /* ViewModel.swift in Sources */,
