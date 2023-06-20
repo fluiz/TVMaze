@@ -14,15 +14,15 @@ struct Dashboard: View {
         TabView {
             ShowsList()
                 .tabItem {
-                    Label("Shows", systemImage: "map")
+                    Label("Shows", systemImage: "sparkles.tv")
                 }
             PeopleList()
                 .tabItem {
-                    Label("People", systemImage: "map")
+                    Label("People", systemImage: "person")
                 }
             FavoritesList()
                 .tabItem {
-                    Label("Favorites", systemImage: "map")
+                    Label("Favorites", systemImage: "heart")
                 }
         }
         .navigationBarHidden(true)
