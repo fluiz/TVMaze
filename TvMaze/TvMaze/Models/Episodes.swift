@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Episode: Codable, Identifiable {
     var id: Int

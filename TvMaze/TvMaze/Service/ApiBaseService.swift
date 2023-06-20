@@ -14,7 +14,7 @@ class ApiBaseService {
     func request<Result: Decodable>(_ endpoint: String, type: Result.Type) async throws -> Result {
         let url = URL(string:baseURL + endpoint)!
         
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let (data, _) = try await URLSession.shared.data(from: url)
         let decoded = try decoder.decode(type, from: data)
         return decoded
     }
