@@ -49,7 +49,9 @@ private struct ShowDetailsContent: View {
                             Color.gray
                         }
                     }
+                    
                     Text(selectedShow.name).font(.title)
+                    
                     HStack {
                         Text(selectedShow.genresString())
                         Spacer()

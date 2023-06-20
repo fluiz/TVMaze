@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 @MainActor class PersonDetailsViewModel: ViewModel {
-    var global: Global?
+    internal var global: Global?
     
-    @Published var credits: [ShowItem] = []
+    @Published private(set) var credits: [ShowItem] = []
     
     func getCredits(personId: Int) {
         Task {

@@ -25,10 +25,9 @@ struct EpisodeItemRow: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    Text(episode.name)
-                    Text(episode.seasonalNumber())
+                    Text(episode.name).font(.title2)
+                    Text(episode.seasonalNumber()).font(.body)
                 }
-                
                 
                 Spacer()
             }
@@ -38,7 +37,7 @@ struct EpisodeItemRow: View {
             } label: {
                 EmptyView()
             }.opacity(0.0)
-        }.background(Color.blue)
+        }
     }
 }
 

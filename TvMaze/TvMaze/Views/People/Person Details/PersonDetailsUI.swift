@@ -42,7 +42,9 @@ private struct PersonDetailsContent: View {
                         Color.gray
                     }
                 }
+                
                 Text(selectedPerson.name).font(.title)
+                
                 Spacer()
                 
                 if (!credits.isEmpty) {
@@ -52,7 +54,7 @@ private struct PersonDetailsContent: View {
                     }.padding()
                     
                     List(credits) { credit in
-                        ShowItemRow(item: credit, favorited: false)
+                        ShowItemRow(item: credit)
                             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
                     }
                     .frame(height: 500)

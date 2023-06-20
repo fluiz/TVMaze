@@ -24,9 +24,11 @@ struct PersonItemRow: View {
                     }
                     .frame(width: 80, height: 120, alignment: .leading)
                 }
+                
                 Text(person.name)
                     .font(.title2)
                     .padding(.leading, 16)
+                
                 Spacer()
             }
             

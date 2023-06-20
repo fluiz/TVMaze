@@ -47,9 +47,7 @@ private struct ShowsListContent: View {
     var body: some View {
         NavigationStack {
             List(shows) { show in
-                ShowItemRow(
-                    item: show,
-                    favorited: false)
+                ShowItemRow(item: show)
                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
             }
             .navigationTitle("Shows")
