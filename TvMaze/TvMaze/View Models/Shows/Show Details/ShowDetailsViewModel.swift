@@ -52,6 +52,10 @@ import SwiftUI
         syncFavorited(showId: show.id)
     }
     
+    func sessionsCount() -> Int {
+        return episodes.last?.season ?? 0
+    }
+    
     private func syncFavorited(showId: Int) {
         guard let favorites = global?.favorites else {
             return

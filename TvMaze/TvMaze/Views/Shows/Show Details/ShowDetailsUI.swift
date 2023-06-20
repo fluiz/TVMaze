@@ -17,7 +17,8 @@ struct ShowDetails: View {
         ShowDetailsContent(
             selectedShow: selectedShow,
             episodes: viewModel.episodes,
-            favorited: viewModel.favorited
+            favorited: viewModel.favorited,
+            seasonCount: viewModel.sessionsCount()
         ) { show in
             viewModel.toggleFavorite(show: show)
         }
@@ -32,7 +33,9 @@ private struct ShowDetailsContent: View {
     var selectedShow: ShowItem
     var episodes: [Episode]
     var favorited: Bool
+    var seasonCount: Int
     var favoritesHandler: (ShowItem) -> Void
+    
     
     var body: some View {
         NavigationStack {
@@ -73,17 +76,7 @@ private struct ShowDetailsContent: View {
                 }
                 Spacer()
                 
-                if (!episodes.isEmpty) {
-                    HStack {
-                        Text("Episodes").font(.title2)
-                        Spacer()
-                    }.padding()
-                }
-                
-                List(episodes) { episode in
-                    EpisodeItemRow(episode: episode)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
-                }
+                EpisodeList(episodes: episodes, seasonCount: seasonCount)
                 .frame(height: 500)
                 .navigationBarTitleDisplayMode(.inline)
             }
@@ -97,6 +90,7 @@ struct ShowDetails_Previews: PreviewProvider {
             selectedShow: ShowItem.mockArray().first!,
             episodes: Episode.mockArray(),
             favorited: false,
+            seasonCount: 3,
             favoritesHandler: { print($0) }
         )
     }
