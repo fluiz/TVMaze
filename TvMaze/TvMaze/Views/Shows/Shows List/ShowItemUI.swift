@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ShowItemRow: View {
     let item: ShowItem
-    let favorited: Bool
     
     var body: some View {
         ZStack {
@@ -24,12 +23,14 @@ struct ShowItemRow: View {
                     }
                     .frame(width: 100, height: 150, alignment: .leading)
                 }
+                
                 VStack(alignment: .leading) {
                     Text(item.name).font(.title)
                     Text(item.genresString())
                 }.padding(.leading, 16)
+                
                 Spacer()
-            }.background(Color.blue)
+            }
             
             NavigationLink {
                 ShowDetails(selectedShow: item)
@@ -43,8 +44,7 @@ struct ShowItemRow: View {
 struct ShowItemRow_Previews: PreviewProvider {
     static var previews: some View {
         ShowItemRow(
-            item: ShowItem.mockArray().first!,
-            favorited: false
+            item: ShowItem.mockArray().first!
         )
     }
 }

@@ -10,11 +10,11 @@ import SwiftUI
 import Combine
 
 @MainActor class PeopleSearchViewModel: ViewModel {
-    var global: Global?
+    internal var global: Global?
     private var disposeBag = Set<AnyCancellable>()
     
-    @Published var people: [Person] = []
-    @Published var searchQuery = ""
+    @Published private(set) var people: [Person] = []
+    @Published private(set) var searchQuery = ""
     
     init() {
         self.setSearchDebounce()

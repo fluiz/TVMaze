@@ -16,10 +16,6 @@ struct EpisodeDetails: View {
         EpisodeDetailsContent(
             selectedEpisode: selectedEpisode
         )
-        .onAppear {
-//            viewModel.prepare(with: global)
-//            viewModel.loadEpisodes(showId: selectedShow.id)
-        }
     }
 }
 
@@ -40,9 +36,13 @@ private struct EpisodeDetailsContent: View {
                         Color.gray
                     }
                 }
+                
                 Text(selectedEpisode.name).font(.title)
+                
                 Spacer()
+                
                 Text(selectedEpisode.seasonalNumber())
+                
                 if let safeSummary = selectedEpisode.summary?.stripHTMLTags() {
                     Spacer()
                     Text(safeSummary).padding()

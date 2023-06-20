@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 @MainActor class ShowDetailsViewModel: ViewModel {
-    var global: Global?
+    internal var global: Global?
     
     @Published private(set) var episodes: [Episode] = []
     @Published private(set) var favorited: Bool = false

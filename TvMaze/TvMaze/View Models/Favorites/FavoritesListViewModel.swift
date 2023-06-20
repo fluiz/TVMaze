@@ -10,11 +10,11 @@ import SwiftUI
 import Combine
 
 @MainActor class FavoritesListViewModel: ViewModel {
-    var global: Global?
+    internal var global: Global?
     private var disposeBag = Set<AnyCancellable>()
     
-    @Published var favoritesList: [ShowItem] = []
-    @Published var searchQuery = ""
+    @Published private(set) var favoritesList: [ShowItem] = []
+    @Published private(set) var searchQuery = ""
     
     init() {
         self.setSearchDebounce()

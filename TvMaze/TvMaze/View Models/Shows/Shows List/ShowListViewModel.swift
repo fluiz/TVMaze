@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 @MainActor class ShowsListViewModel: ViewModel {
-    var global: Global?
+    internal var global: Global?
     private var disposeBag = Set<AnyCancellable>()
     
     @Published private(set) var shows: [ShowItem] = []
@@ -69,7 +69,6 @@ import Combine
     
     func clearError() {
         errorMessage = nil
-        gotError = false
     }
     
     private func setSearchDebounce() {

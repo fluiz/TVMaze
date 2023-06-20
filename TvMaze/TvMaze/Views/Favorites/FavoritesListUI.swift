@@ -34,8 +34,7 @@ private struct FavoritesListContent: View {
         NavigationStack {
             List(favoriteShows) { show in
                 ShowItemRow(
-                    item: show,
-                    favorited: false
+                    item: show
                 ).listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
             }
             .navigationTitle("Favorites")
