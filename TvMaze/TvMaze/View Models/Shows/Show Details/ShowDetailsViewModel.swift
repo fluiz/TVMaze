@@ -11,8 +11,19 @@ import SwiftUI
 @MainActor class ShowDetailsViewModel: ViewModel {
     var global: Global?
     
-    @Published var episodes: [Episode] = []
-    @Published var favorited: Bool = false
+    @Published private(set) var episodes: [Episode] = []
+    @Published private(set) var favorited: Bool = false
+    
+    @Published private(set) var errorMessage: String? = nil {
+        didSet {
+            if (errorMessage == nil) {
+                gotError = false
+            } else {
+                gotError = true
+            }
+        }
+    }
+    @Published var gotError: Bool = false
     
     func loadEpisodes(showId: Int) {
         syncFavorited(showId: showId)
@@ -24,6 +35,7 @@ import SwiftUI
                 episodes = try await service.getEpisodes(showId: showId)
             } catch {
                 print(error)
+                errorMessage = "Error loading this show's episodes. Please try again later."
             }
         }
     }

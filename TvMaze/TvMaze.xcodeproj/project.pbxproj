@@ -207,13 +207,6 @@
 			path = "Episode Details";
 			sourceTree = "<group>";
 		};
-		E521A97B2A3ED63000AD9C50 /* Episode Details */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Episode Details";
-			sourceTree = "<group>";
-		};
 		E56207C52A40D77C00EE8A7F /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,10 +255,10 @@
 		E57615532A3EAB8300B46B0C /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				E57615552A3EABBE00B46B0C /* Shows */,
 				E56207C82A40D80900EE8A7F /* Favorites */,
 				E512749C2A3F5841009E5E9F /* People */,
 				E521A9782A3EC07900AD9C50 /* ViewModel.swift */,
-				E57615552A3EABBE00B46B0C /* Shows */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -286,7 +279,6 @@
 		E57615552A3EABBE00B46B0C /* Shows */ = {
 			isa = PBXGroup;
 			children = (
-				E521A97B2A3ED63000AD9C50 /* Episode Details */,
 				E57615562A3EABCA00B46B0C /* Shows List */,
 				E521A96F2A3EAF5900AD9C50 /* Show Details */,
 			);
