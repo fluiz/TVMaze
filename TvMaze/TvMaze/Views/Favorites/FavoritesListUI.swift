@@ -21,7 +21,6 @@ struct FavoritesList: View {
         .onAppear {
             viewModel.prepare(with: global)
             viewModel.syncFavoritesList()
-            print("On Appear called on root view")
         }
     }
 }
@@ -42,7 +41,6 @@ private struct FavoritesListContent: View {
             .navigationTitle("Favorites")
             .onAppear {
                 searchHandler(searchString)
-                print("On Appear called on child view")
             }
         }
         .searchable(text: $searchString)
