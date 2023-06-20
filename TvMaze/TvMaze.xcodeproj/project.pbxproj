@@ -262,10 +262,10 @@
 		E57615532A3EAB8300B46B0C /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				E57615552A3EABBE00B46B0C /* Shows */,
 				E56207C82A40D80900EE8A7F /* Favorites */,
 				E512749C2A3F5841009E5E9F /* People */,
 				E521A9782A3EC07900AD9C50 /* ViewModel.swift */,
-				E57615552A3EABBE00B46B0C /* Shows */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
