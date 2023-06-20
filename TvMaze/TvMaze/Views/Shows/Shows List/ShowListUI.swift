@@ -12,16 +12,29 @@ struct ShowsList: View {
     @StateObject var viewModel = ShowsListViewModel()
     
     var body: some View {
-        ShowsListContent(
-            shows: viewModel.shows,
-            searchString: viewModel.searchQuery,
-            searchHandler: { query in
-                viewModel.searchShows(query: query)
-            }
-        )
-        .onAppear {
-            viewModel.prepare(with: global)
-            viewModel.updateShows()
+        VStack {
+            ShowsListContent(
+                shows: viewModel.shows,
+                searchString: viewModel.searchQuery,
+                searchHandler: { query in
+                    viewModel.searchShows(query: query)
+                }
+            )
+            .onAppear {
+                viewModel.prepare(with: global)
+                viewModel.updateShows()
+        }
+        }.alert(isPresented: $viewModel.gotError) {
+            Alert(
+                title: Text("Error"),
+                message: Text(viewModel.errorMessage ?? "Unknown error"),
+                dismissButton: .default(
+                    Text("OK"),
+                    action: {
+                        viewModel.clearError()
+                    }
+                )
+            )
         }
     }
 }

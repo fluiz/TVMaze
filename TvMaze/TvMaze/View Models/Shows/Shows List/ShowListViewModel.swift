@@ -13,8 +13,19 @@ import Combine
     var global: Global?
     private var disposeBag = Set<AnyCancellable>()
     
-    @Published var shows: [ShowItem] = []
-    @Published var searchQuery = ""
+    @Published private(set) var shows: [ShowItem] = []
+    @Published private(set) var searchQuery = ""
+    
+    @Published private(set) var errorMessage: String? = nil {
+        didSet {
+            if (errorMessage == nil) {
+                gotError = false
+            } else {
+                gotError = true
+            }
+        }
+    }
+    @Published var gotError: Bool = false
     
     init() {
         self.setSearchDebounce()
@@ -29,6 +40,7 @@ import Combine
                 shows = try await service.getShows(page: 0)
             } catch {
                 print(error)
+                errorMessage = "Error loading shows. Please try again later."
             }
         }
     }
@@ -50,8 +62,14 @@ import Combine
                 }
             } catch {
                 print(error)
+                errorMessage = "Error searching for shows. Please try again later."
             }
         }
+    }
+    
+    func clearError() {
+        errorMessage = nil
+        gotError = false
     }
     
     private func setSearchDebounce() {
