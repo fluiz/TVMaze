@@ -43,9 +43,9 @@ private struct EpisodeDetailsContent: View {
                 Text(selectedEpisode.name).font(.title)
                 Spacer()
                 Text(selectedEpisode.seasonalNumber())
-                if let safeSummary = selectedEpisode.summary {
+                if let safeSummary = selectedEpisode.summary?.stripHTMLTags() {
                     Spacer()
-                    Text(safeSummary)
+                    Text(safeSummary).padding()
                 }
             }
         }

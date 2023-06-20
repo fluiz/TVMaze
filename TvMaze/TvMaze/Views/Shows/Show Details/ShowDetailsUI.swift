@@ -60,7 +60,7 @@ private struct ShowDetailsContent: View {
                             }
                     }.padding(.horizontal)
                     
-                    if let safeSummary = selectedShow.summary {
+                    if let safeSummary = selectedShow.summary?.stripHTMLTags() {
                         Text(safeSummary).padding()
                     }
                     
